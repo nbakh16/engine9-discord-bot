@@ -7,8 +7,9 @@ client.remove_command('help')
 
 @client.event
 async def on_ready():
-    activity = discord.Game(name="type en help")
+    activity = discord.Game(name=" en help")
     await client.change_presence(status=discord.Status.online, activity=activity)
+    #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="en help"))
     print('engine9 ready to rock!')
 
 #write message on console when a member send message
@@ -116,8 +117,8 @@ async def help(ctx):
 @client.event
 async def on_command_error(ctx, error):
     print(ctx.command.name + " was invoked incorrectly")
-    await ctx.send(ctx.command.name + " was invoked incorrectly")
-    print(error)
+    #await ctx.send(ctx.command.name + " was invoked incorrectly")
+    await ctx.send(error)
 
 #client.run(TOKEN)
 client.run(os.environ['token'])
