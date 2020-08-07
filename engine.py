@@ -99,5 +99,5 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 
-client.run(TOKEN)
-#clinet.run(os.environ['token'])
+#client.run(TOKEN)
+clinet.run(os.environ['token'])
