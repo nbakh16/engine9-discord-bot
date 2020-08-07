@@ -85,7 +85,7 @@ async def name(ctx, *, user: discord.User=None):
         await ctx.send(user)
 
 #help command
-@client.commmand()
+@client.command()
 async def help(ctx):
     embed=discord.Embed(title="Commands", description="`en` is my prefix. Type `en` before every commands", color=0xe8e8e8)
     embed.set_author(name="Engine#9", url="https://facebook.com/nbakh99")
