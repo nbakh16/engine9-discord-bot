@@ -22,10 +22,9 @@ async def on_message(message):
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('en'):
-        await message.channel.send(':blush:')
     if message.content.startswith('ho'):
         await message.channel.send('Okay')
+    await client.process_commands(message)
 
 #greetings to newly joined member and assing a role
 @client.event
@@ -54,7 +53,7 @@ async def on_member_remove(member):
     guild = member.guild
 
     embed = discord.Embed(title=str('***Member left***'), colour=0x6BFF33,
-        description=str("{} left the server!\n I don't think anyone cares").format(mention))
+        description=str("{} left the server!\n Who cares!!").format(mention))
     embed.set_thumbnail(url=f"{member.avatar_url}")
     embed.set_author(name=f'{member.name}', icon_url=f'{member.avatar_url}')
     embed.set_footer(text=f'{member.guild}', icon_url=f'{member.guild.icon_url}')
