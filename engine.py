@@ -65,7 +65,7 @@ async def on_member_remove(member):
 #test command "en ping"
 @client.command()
 async def ping(ctx):
-    await ctx.send("Yeah! I'm alive." <:pubgchickn:719923687410761769>')
+    await ctx.send("Yeah! I'm alive. <:pubgchickn:719923687410761769>")
 
 #sent embeded invite link when type "en invite"
 @client.command()
