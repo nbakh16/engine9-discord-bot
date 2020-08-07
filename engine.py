@@ -79,9 +79,20 @@ async def invite(ctx):
 async def name(ctx, *, user: discord.User=None):
 
     if user is None:
-        await ctx.send(ctx.author)
+        await ctx.send(f"Your discord username {ctx.author}")
     else:
-        await ctx.send(user)
+        await ctx.send(f"Discord username {user}")
+
+#delete specific amount of messages
+@client.command(pass_context=True)
+@commands.has_permissions(manage_messages=true)
+async def clear(ctx, amount=10): #10 is default amount
+    channel = ctx.message.channel
+    messages = []
+    async for message in channel.history(limit=(amount+1)):
+              messages.append(message)
+    await channel.delete_messages(messages)
+    await ctx.send('{} Messages deleted.' .format(amount))
 
 #help command
 @client.command()
@@ -92,11 +103,21 @@ async def help(ctx):
     embed.add_field(name="ping", value="to test the bot", inline=False)
     embed.add_field(name="invite", value="get server invite link", inline=False)
     embed.add_field(name="name", value="know username", inline=False)
-    embed.add_field(name="name @user", value="know @'s username", inline=False)
+    embed.add_field(name="name *@user*", value="know @'s username", inline=False)
+    embed.add_field(name="clear", value="clears 10 messages", inline=False)
+    embed.add_field(name="clear *amount*", value="clears specific amounts of messages", inline=False)
     embed.set_footer(text="Soon will be added more commands. Stay tuned! Facing any problem or got suggestion about new commands? Feel free to contact with @Nabil16#3777")
     #await self.bot.say(embed=embed)
     await ctx.send(embed=embed)
 
+
+#errors handling
+
+@client.event
+async def on_command_error(ctx, error):
+    print(ctx.command.name + " was invoked incorrectly")
+    await ctx.send(ctx.command.name + " was invoked incorrectly")
+    print(error)
 
 #client.run(TOKEN)
 client.run(os.environ['token'])
