@@ -85,7 +85,7 @@ async def name(ctx, *, user: discord.User=None):
 
 #delete specific amount of messages
 @client.command(pass_context=True)
-@commands.has_permissions(manage_messages=true)
+@commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=10): #10 is default amount
     channel = ctx.message.channel
     messages = []
