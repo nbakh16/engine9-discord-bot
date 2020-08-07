@@ -100,4 +100,4 @@ async def help(ctx):
 
 
 #client.run(TOKEN)
-clinet.run(os.environ['token'])
+client.run(os.environ['token'])
